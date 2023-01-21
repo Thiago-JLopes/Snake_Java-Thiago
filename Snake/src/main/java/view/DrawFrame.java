@@ -22,7 +22,7 @@ public class DrawFrame extends JFrame {
     }
 
     public void draw() {
-        this.setSize(600, 600);
+        this.setSize(610, 610);
         this.setVisible(true);
 
         this.tabuleiro = new DrawPanel();
