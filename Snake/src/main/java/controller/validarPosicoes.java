@@ -16,7 +16,12 @@ public class validarPosicoes {
         for(int i = DrawPanel.getSnakeSize(); i > 0; i--) {
             if(pX[0] == pX[i] && pY[0] == pY[i]) {
                 DrawPanel.setExecutando(false);
+                break;
             }
+        }
+        
+        if(pX[0] < 0 || pX[0] > DrawPanel.getLARGURA_TELA()) {
+            DrawPanel.setExecutando(false);
         }
     }
 }
