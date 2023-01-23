@@ -5,10 +5,11 @@
 package view;
 
 import controller.leitorTeclado;
-import controller.tratarComandos;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -17,7 +18,7 @@ import javax.swing.Timer;
  *
  * @author thiago
  */
-public class DrawPanel extends JPanel {
+public class DrawPanel extends JPanel implements ActionListener {
 
     private static final int LARGURA_TELA = 600;
     private static final int ALTURA_TELA = 600;
@@ -32,20 +33,21 @@ public class DrawPanel extends JPanel {
     private static boolean executando = false;
     private static int snakeSize = 6;
     Timer timer;
-    tratarComandos lerComandos;
-
+    
     public DrawPanel() {
         setPreferredSize(new Dimension(DrawPanel.LARGURA_TELA, DrawPanel.ALTURA_TELA));
         this.addKeyListener(new leitorTeclado());
         iniciar();
     }
+
     private void iniciar() {
         createApple();
         executando = true;
-        timer = new Timer(INTERVALO, lerComandos = new tratarComandos(this));
+        timer = new Timer(INTERVALO, this);
         timer.start();
-        
+
     }
+//implementa métodos abbstratos
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -55,6 +57,14 @@ public class DrawPanel extends JPanel {
 
         drawScreen(g);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        toWalk();
+        this.repaint();
+    }
+//--------------------------------------------------------------------------------------------------------------
+//Getters and setters    
 
     public static void setSnakeSize(int snakeSize) {
         DrawPanel.snakeSize = snakeSize;
@@ -115,6 +125,7 @@ public class DrawPanel extends JPanel {
     public static int getAppleY() {
         return appleY;
     }
+//--------------------------------------------------------------------------------------------------------------
 
     private static void createApple() {
         Random radon = new Random();
@@ -137,4 +148,29 @@ public class DrawPanel extends JPanel {
             }
         }
     }
+
+    private void toWalk() {
+        for (int i = getSnakeSize(); i > 0; i++) {
+            pX[i] = pX[i - 1];
+            pY[i] = pY[i - 1];
+        }
+
+        switch (getDirecao()) {
+            case 'C':
+                pY[0] = pY[0] - getTAMANHO_ELEMENTO();
+                break;
+            case 'B':
+                pX[0] = pY[0] + getTAMANHO_ELEMENTO();
+                break;
+            case 'D':
+                pX[0] = pX[0] + getTAMANHO_ELEMENTO();
+                break;
+            case 'E':
+                pY[0] = pX[0] - getTAMANHO_ELEMENTO();
+                break;
+            default:
+                break;
+        }
+    }
+
 }

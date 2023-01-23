@@ -4,6 +4,7 @@
 package com.mycompany.snake;
 
 import javax.swing.JFrame;
+import view.DrawFrame;
 import view.DrawPanel;
 
 /**
@@ -13,7 +14,7 @@ import view.DrawPanel;
 public class Snake {
 
     public static void main(String[] args) {
-        DrawPanel panel = new DrawPanel();
-        panel.repaint();
+        DrawFrame frame = new DrawFrame();
+        frame.draw();
     }
 }

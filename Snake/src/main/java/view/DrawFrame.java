@@ -6,7 +6,6 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import javax.swing.JFrame;
 
 /**
@@ -15,7 +14,7 @@ import javax.swing.JFrame;
  */
 public class DrawFrame extends JFrame {
 
-    private DrawPanel tabuleiro = null;
+    private DrawPanel tabuleiro;
 
     public DrawFrame() {
         super("Snake");
