@@ -23,7 +23,7 @@ public class DrawPanel extends JPanel implements ActionListener {
     private static final int LARGURA_TELA = 600;
     private static final int ALTURA_TELA = 600;
     private static final int TAMANHO_ELEMENTO = 20;
-    private static final int INTERVALO = 200;
+    private static final int INTERVALO = 100;
     private static final int UNIDADES = LARGURA_TELA * ALTURA_TELA / (TAMANHO_ELEMENTO * TAMANHO_ELEMENTO);
     private static final int[] pX = new int[UNIDADES];
     private static final int[] pY = new int[UNIDADES];
@@ -31,11 +31,12 @@ public class DrawPanel extends JPanel implements ActionListener {
     private static int appleX;
     private static int appleY;
     private static boolean executando = false;
-    private static int snakeSize = 6;
+    private static int snakeSize = 20;
     Timer timer;
-    
+
     public DrawPanel() {
         setPreferredSize(new Dimension(DrawPanel.LARGURA_TELA, DrawPanel.ALTURA_TELA));
+         setFocusable(true);
         this.addKeyListener(new leitorTeclado());
         iniciar();
     }
@@ -76,14 +77,6 @@ public class DrawPanel extends JPanel implements ActionListener {
 
     public static void setDirecao(char direcao) {
         DrawPanel.direcao = direcao;
-    }
-
-    public static int[] getpX() {
-        return pX;
-    }
-
-    public static int[] getpY() {
-        return pY;
     }
 
     public static char getDirecao() {
@@ -150,7 +143,7 @@ public class DrawPanel extends JPanel implements ActionListener {
     }
 
     private void toWalk() {
-        for (int i = getSnakeSize(); i > 0; i++) {
+        for (int i = getSnakeSize(); i > 0; i--) {
             pX[i] = pX[i - 1];
             pY[i] = pY[i - 1];
         }
@@ -160,13 +153,13 @@ public class DrawPanel extends JPanel implements ActionListener {
                 pY[0] = pY[0] - getTAMANHO_ELEMENTO();
                 break;
             case 'B':
-                pX[0] = pY[0] + getTAMANHO_ELEMENTO();
+                pY[0] = pY[0] + getTAMANHO_ELEMENTO();
                 break;
             case 'D':
                 pX[0] = pX[0] + getTAMANHO_ELEMENTO();
                 break;
             case 'E':
-                pY[0] = pX[0] - getTAMANHO_ELEMENTO();
+                pX[0] = pX[0] - getTAMANHO_ELEMENTO();
                 break;
             default:
                 break;

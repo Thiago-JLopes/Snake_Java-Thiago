@@ -3,9 +3,7 @@
  */
 package com.mycompany.snake;
 
-import javax.swing.JFrame;
 import view.DrawFrame;
-import view.DrawPanel;
 
 /**
  *
