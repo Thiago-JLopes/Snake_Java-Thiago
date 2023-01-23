@@ -5,6 +5,8 @@
 package view;
 
 import controller.leitorTeclado;
+import controller.validarPosicoes;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -36,14 +38,16 @@ public class DrawPanel extends JPanel implements ActionListener {
 
     public DrawPanel() {
         setPreferredSize(new Dimension(DrawPanel.LARGURA_TELA, DrawPanel.ALTURA_TELA));
-         setFocusable(true);
+        this.setLayout(new BorderLayout());
+        this.setBackground(Color.black);
+        this.setFocusable(true);
         this.addKeyListener(new leitorTeclado());
         iniciar();
     }
 
     private void iniciar() {
         createApple();
-        executando = true;
+        setExecutando(true);
         timer = new Timer(INTERVALO, this);
         timer.start();
 
@@ -61,26 +65,25 @@ public class DrawPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        toWalk();
+        if (isExecutando()) {
+            toWalk();
+            validarPosicoes.validarPosicoes(pX, pY);
+        }
         this.repaint();
     }
 //--------------------------------------------------------------------------------------------------------------
-//Getters and setters    
+//Getters and setters 
 
-    public static void setSnakeSize(int snakeSize) {
-        DrawPanel.snakeSize = snakeSize;
-    }
-
-    public static int getSnakeSize() {
-        return snakeSize;
+    public static void setExecutando(boolean executando) {
+        DrawPanel.executando = executando;
     }
 
     public static void setDirecao(char direcao) {
         DrawPanel.direcao = direcao;
     }
 
-    public static char getDirecao() {
-        return direcao;
+    public static void setSnakeSize(int snakeSize) {
+        DrawPanel.snakeSize = snakeSize;
     }
 
     public static void setAppleX(int appleX) {
@@ -91,7 +94,19 @@ public class DrawPanel extends JPanel implements ActionListener {
         DrawPanel.appleY = appleY;
     }
 
-    public int getUNIDADES() {
+    public static int getINTERVALO() {
+        return INTERVALO;
+    }
+
+    public static int getSnakeSize() {
+        return snakeSize;
+    }
+
+    public static char getDirecao() {
+        return direcao;
+    }
+
+    public static int getUNIDADES() {
         return UNIDADES;
     }
 

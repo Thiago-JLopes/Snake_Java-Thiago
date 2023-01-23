@@ -1,1 +1,4 @@
+controller/leitorTeclado.class
+view/DrawFrame.class
+view/DrawPanel.class
 com/mycompany/snake/Snake.class

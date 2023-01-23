@@ -4,8 +4,6 @@
  */
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import javax.swing.JFrame;
 
 /**
@@ -25,8 +23,6 @@ public class DrawFrame extends JFrame {
         this.setVisible(true);
 
         this.tabuleiro = new DrawPanel();
-        this.tabuleiro.setLayout(new BorderLayout());
-        this.tabuleiro.setBackground(Color.black);
 
         this.add(this.tabuleiro);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
