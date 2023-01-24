@@ -14,5 +14,6 @@ public class Snake {
     public static void main(String[] args) {
         DrawFrame frame = new DrawFrame();
         frame.draw();
+        frame.pack();
     }
 }

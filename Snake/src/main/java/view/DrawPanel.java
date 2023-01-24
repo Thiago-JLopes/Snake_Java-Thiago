@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.CapturarMaca;
 import controller.leitorTeclado;
 import controller.validarPosicoes;
 import java.awt.BorderLayout;
@@ -22,8 +23,8 @@ import javax.swing.Timer;
  */
 public class DrawPanel extends JPanel implements ActionListener {
 
-    private static final int LARGURA_TELA = 600;
-    private static final int ALTURA_TELA = 600;
+    private static final int LARGURA_TELA = 620;
+    private static final int ALTURA_TELA = 540;
     private static final int TAMANHO_ELEMENTO = 20;
     private static final int INTERVALO = 100;
     private static final int UNIDADES = LARGURA_TELA * ALTURA_TELA / (TAMANHO_ELEMENTO * TAMANHO_ELEMENTO);
@@ -33,8 +34,8 @@ public class DrawPanel extends JPanel implements ActionListener {
     private static int appleX;
     private static int appleY;
     private static boolean executando = false;
-    private static int snakeSize = 20;
-    Timer timer;
+    private static int snakeSize = 6;
+    public static Timer timer;
 
     public DrawPanel() {
         setPreferredSize(new Dimension(DrawPanel.LARGURA_TELA, DrawPanel.ALTURA_TELA));
@@ -67,6 +68,7 @@ public class DrawPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (isExecutando()) {
             toWalk();
+            CapturarMaca.capturar(pX, pY);
             validarPosicoes.validarPosicoes(pX, pY);
         }
         this.repaint();
@@ -135,7 +137,7 @@ public class DrawPanel extends JPanel implements ActionListener {
     }
 //--------------------------------------------------------------------------------------------------------------
 
-    private static void createApple() {
+    public static void createApple() {
         Random radon = new Random();
 
         setAppleX(radon.nextInt(getLARGURA_TELA() / getTAMANHO_ELEMENTO()) * getTAMANHO_ELEMENTO());

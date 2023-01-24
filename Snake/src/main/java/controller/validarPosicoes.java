@@ -11,17 +11,25 @@ import view.DrawPanel;
  * @author thiago
  */
 public class validarPosicoes {
-    
+
     public static void validarPosicoes(int pX[], int pY[]) {
-        for(int i = DrawPanel.getSnakeSize(); i > 0; i--) {
-            if(pX[0] == pX[i] && pY[0] == pY[i]) {
+        for (int i = DrawPanel.getSnakeSize(); i > 0; i--) {
+            if (pX[0] == pX[i] && pY[0] == pY[i]) {
                 DrawPanel.setExecutando(false);
                 break;
             }
         }
-        
-        if(pX[0] < 0 || pX[0] > DrawPanel.getLARGURA_TELA()) {
+
+        if (pX[0] < 0 || pX[0] > DrawPanel.getLARGURA_TELA()) {
             DrawPanel.setExecutando(false);
+        }
+
+        if (pY[0] < 0 || pY[0] > DrawPanel.getALTURA_TELA()) {
+            DrawPanel.setExecutando(false);
+        }
+        
+        if(!DrawPanel.isExecutando()) {
+            DrawPanel.timer.stop();
         }
     }
 }
