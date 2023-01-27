@@ -23,18 +23,18 @@ import javax.swing.Timer;
  */
 public class DrawPanel extends JPanel implements ActionListener {
 
-    private static final int LARGURA_TELA = 620;
-    private static final int ALTURA_TELA = 540;
+    private static final int LARGURA_TELA = 600;
+    private static final int ALTURA_TELA = 600;
     private static final int TAMANHO_ELEMENTO = 20;
-    private static final int INTERVALO = 100;
     private static final int UNIDADES = LARGURA_TELA * ALTURA_TELA / (TAMANHO_ELEMENTO * TAMANHO_ELEMENTO);
-    private static final int[] pX = new int[UNIDADES];
-    private static final int[] pY = new int[UNIDADES];
+    private static final int[] pX = new int[700];
+    private static final int[] pY = new int[600];
+    private static final int INTERVALO = 310;
     private static char direcao = 'D';
     private static int appleX;
     private static int appleY;
     private static boolean executando = false;
-    private static int snakeSize = 6;
+    private static int snakeSize = 10;
     public static Timer timer;
 
     public DrawPanel() {
@@ -53,13 +53,13 @@ public class DrawPanel extends JPanel implements ActionListener {
         timer.start();
 
     }
-//implementa métodos abbstratos
+//implementa métodos abstratos
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.white);
-        g.drawString("SNAKE", 280, 10);
+        //  g.drawString("SNAKE", 280, 10);
 
         drawScreen(g);
     }
@@ -74,8 +74,58 @@ public class DrawPanel extends JPanel implements ActionListener {
         this.repaint();
     }
 //--------------------------------------------------------------------------------------------------------------
-//Getters and setters 
+    public static void createApple() {
+        Random radon = new Random();
 
+        setAppleX(radon.nextInt(getLARGURA_TELA() / getTAMANHO_ELEMENTO()) * getTAMANHO_ELEMENTO());
+        setAppleY(radon.nextInt(getALTURA_TELA() / getTAMANHO_ELEMENTO()) * getTAMANHO_ELEMENTO());
+    }
+
+    public void drawScreen(Graphics g) {
+        if (isExecutando()) {
+
+            g.setColor(Color.red);
+            g.fillOval(getAppleX(), getAppleY(), getTAMANHO_ELEMENTO(), getTAMANHO_ELEMENTO());
+
+            for (int i = 0; i < getSnakeSize(); i++) {
+                if (i == 0) {
+                    g.setColor(Color.green);
+                    g.fillRect(pX[0], pY[0], TAMANHO_ELEMENTO, TAMANHO_ELEMENTO);
+                    System.out.println("Posição x" + pX[0]);
+                } else {
+                    g.setColor(new Color(144, 238, 144));
+                    g.fillRect(pX[i], pY[i], TAMANHO_ELEMENTO, TAMANHO_ELEMENTO);
+                    System.out.println("Posição x" + pX[0]);
+                }
+            }
+        }
+    }
+
+    private void toWalk() {
+        for (int i = getSnakeSize(); i > 0; i--) {
+            pX[i] = pX[i - 1];
+            pY[i] = pY[i - 1];
+        }
+
+        switch (getDirecao()) {
+            case 'C':
+                pY[0] = pY[0] - TAMANHO_ELEMENTO;
+                break;
+            case 'B':
+                pY[0] = pY[0] + TAMANHO_ELEMENTO;
+                break;
+            case 'D':
+                pX[0] = pX[0] + TAMANHO_ELEMENTO;
+                break;
+            case 'E':
+                pX[0] = pX[0] - TAMANHO_ELEMENTO;
+                break;
+            default:
+                break;
+        }
+    }
+    //--------------------------------------------------------------------------------------------------------------
+    //Getters and setters 
     public static void setExecutando(boolean executando) {
         DrawPanel.executando = executando;
     }
@@ -135,52 +185,4 @@ public class DrawPanel extends JPanel implements ActionListener {
     public static int getAppleY() {
         return appleY;
     }
-//--------------------------------------------------------------------------------------------------------------
-
-    public static void createApple() {
-        Random radon = new Random();
-
-        setAppleX(radon.nextInt(getLARGURA_TELA() / getTAMANHO_ELEMENTO()) * getTAMANHO_ELEMENTO());
-        setAppleY(radon.nextInt(getALTURA_TELA() / getTAMANHO_ELEMENTO()) * getTAMANHO_ELEMENTO());
-    }
-
-    public void drawScreen(Graphics g) {
-        g.setColor(Color.red);
-        g.fillOval(getAppleX(), getAppleY(), getTAMANHO_ELEMENTO(), getTAMANHO_ELEMENTO());
-
-        for (int i = 0; i < getSnakeSize(); i++) {
-            if (i == 0) {
-                g.setColor(Color.green);
-                g.fillRect(pX[0], pY[0], TAMANHO_ELEMENTO, TAMANHO_ELEMENTO);
-            } else {
-                g.setColor(new Color(144, 238, 144));
-                g.fillRect(pX[i], pY[i], TAMANHO_ELEMENTO, TAMANHO_ELEMENTO);
-            }
-        }
-    }
-
-    private void toWalk() {
-        for (int i = getSnakeSize(); i > 0; i--) {
-            pX[i] = pX[i - 1];
-            pY[i] = pY[i - 1];
-        }
-
-        switch (getDirecao()) {
-            case 'C':
-                pY[0] = pY[0] - getTAMANHO_ELEMENTO();
-                break;
-            case 'B':
-                pY[0] = pY[0] + getTAMANHO_ELEMENTO();
-                break;
-            case 'D':
-                pX[0] = pX[0] + getTAMANHO_ELEMENTO();
-                break;
-            case 'E':
-                pX[0] = pX[0] - getTAMANHO_ELEMENTO();
-                break;
-            default:
-                break;
-        }
-    }
-
 }

@@ -1,3 +1,4 @@
+controller/CapturarMaca.class
 controller/leitorTeclado.class
 view/DrawFrame.class
 view/DrawPanel.class
