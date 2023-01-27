@@ -63,8 +63,6 @@ public class DrawPanel extends JPanel implements ActionListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.white);
-        //  g.drawString("SNAKE", 280, 10);
-
         drawScreen(g);
     }
 
@@ -142,11 +140,12 @@ public class DrawPanel extends JPanel implements ActionListener {
         g.setFont(new Font(FONTE, Font.BOLD, 17));
         FontMetrics metrics = getFontMetrics(g.getFont());
         g.drawString("Pontos " + getMacasComidas(), (getLARGURA_TELA() - metrics.stringWidth("Pontos " + getMacasComidas())), g.getFont().getSize());
-        
+
         g.setColor(Color.red);
         g.setFont(new Font(FONTE, Font.BOLD, 40));
         FontMetrics msg = getFontMetrics(g.getFont());
-        g.drawString("Game Over! ", (getLARGURA_TELA() - msg.stringWidth("Game Over"))/2, getALTURA_TELA() / 2);
+        g.drawString("Game Over! ", (getLARGURA_TELA() - msg.stringWidth("Game Over")) / 2, getALTURA_TELA() / 2);
+
     }
     //--------------------------------------------------------------------------------------------------------------
     //Getters and setters 
