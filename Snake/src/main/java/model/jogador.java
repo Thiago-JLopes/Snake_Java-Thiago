@@ -9,9 +9,9 @@ package model;
  * @author thiago
  */
 public class jogador {
-    private final String nome;
-    private final String idade;
-    private final String email;
+    private  String nome;
+    private  String idade;
+    private  String email;
     private int record;
 
     public jogador(String nome, String idade, String email) {
