@@ -10,6 +10,8 @@ import controller.validarPosicoes;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,12 +29,14 @@ public class DrawPanel extends JPanel implements ActionListener {
     private static final int ALTURA_TELA = 600;
     private static final int TAMANHO_ELEMENTO = 20;
     private static final int UNIDADES = LARGURA_TELA * ALTURA_TELA / (TAMANHO_ELEMENTO * TAMANHO_ELEMENTO);
+    private static final int INTERVALO = 310;
+    private static final String FONTE = "Ink Free";
     private static final int[] pX = new int[700];
     private static final int[] pY = new int[600];
-    private static final int INTERVALO = 310;
     private static char direcao = 'D';
     private static int appleX;
     private static int appleY;
+    private static int macasComidas = 0;
     private static boolean executando = false;
     private static int snakeSize = 10;
     public static Timer timer;
@@ -74,6 +78,7 @@ public class DrawPanel extends JPanel implements ActionListener {
         this.repaint();
     }
 //--------------------------------------------------------------------------------------------------------------
+
     public static void createApple() {
         Random radon = new Random();
 
@@ -98,6 +103,11 @@ public class DrawPanel extends JPanel implements ActionListener {
                     System.out.println("Posição x" + pX[0]);
                 }
             }
+            
+            g.setColor(Color.red);
+            g.setFont(new Font(FONTE, Font.BOLD, 17));
+            FontMetrics metrics = getFontMetrics(g.getFont());
+            g.drawString("Pontos " + getMacasComidas(), (getLARGURA_TELA() - metrics.stringWidth("Pontos " + getMacasComidas())), g.getFont().getSize());
         }
     }
 
@@ -126,6 +136,11 @@ public class DrawPanel extends JPanel implements ActionListener {
     }
     //--------------------------------------------------------------------------------------------------------------
     //Getters and setters 
+
+    public static void setMacasComidas(int macasComidas) {
+        DrawPanel.macasComidas = macasComidas;
+    }
+
     public static void setExecutando(boolean executando) {
         DrawPanel.executando = executando;
     }
@@ -144,6 +159,10 @@ public class DrawPanel extends JPanel implements ActionListener {
 
     public static void setAppleY(int appleY) {
         DrawPanel.appleY = appleY;
+    }
+
+    public static int getMacasComidas() {
+        return macasComidas;
     }
 
     public static int getINTERVALO() {

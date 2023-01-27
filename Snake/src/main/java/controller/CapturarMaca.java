@@ -14,6 +14,7 @@ public class CapturarMaca {
     public static void capturar(int pX[], int pY[]) {
         if(pX[0] == DrawPanel.getAppleX() && pY[0] == DrawPanel.getAppleY()) {
             DrawPanel.setSnakeSize(DrawPanel.getSnakeSize()+1);
+            DrawPanel.setMacasComidas(DrawPanel.getMacasComidas()+1);
             DrawPanel.createApple();
         }
     }
