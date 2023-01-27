@@ -20,25 +20,25 @@ public class leitorTeclado extends KeyAdapter {
             case KeyEvent.VK_LEFT:
                 if (DrawPanel.getDirecao() != 'D') {
                     DrawPanel.setDirecao('E');
-                    System.out.println("Left key pressed");
+                    //System.out.println("Left key pressed");
                     break;
                 }
             case KeyEvent.VK_RIGHT:
                 if (DrawPanel.getDirecao() != 'E') {
                     DrawPanel.setDirecao('D');
-                    System.out.println("Right key pressed");
+                    //System.out.println("Right key pressed");
                 }
                 break;
             case KeyEvent.VK_UP:
                 if (DrawPanel.getDirecao() != 'B') {
                     DrawPanel.setDirecao('C');
-                    System.out.println("Up key pressed");
+                    //System.out.println("Up key pressed");
                 }
                 break;
             case KeyEvent.VK_DOWN:
                 if (DrawPanel.getDirecao() != 'C') {
                     DrawPanel.setDirecao('B');
-                    System.out.println("Down key pressed");
+                    //System.out.println("Down key pressed");
                 }
                 break;
                 default:
