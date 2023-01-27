@@ -29,7 +29,7 @@ public class DrawPanel extends JPanel implements ActionListener {
     private static final int ALTURA_TELA = 600;
     private static final int TAMANHO_ELEMENTO = 20;
     private static final int UNIDADES = LARGURA_TELA * ALTURA_TELA / (TAMANHO_ELEMENTO * TAMANHO_ELEMENTO);
-    private static final int INTERVALO = 310;
+    private static final int INTERVALO = 320;
     private static final String FONTE = "Ink Free";
     private static final int[] pX = new int[700];
     private static final int[] pY = new int[600];
@@ -103,11 +103,13 @@ public class DrawPanel extends JPanel implements ActionListener {
                     System.out.println("Posição x" + pX[0]);
                 }
             }
-            
-            g.setColor(Color.red);
+
+            g.setColor(Color.yellow);
             g.setFont(new Font(FONTE, Font.BOLD, 17));
             FontMetrics metrics = getFontMetrics(g.getFont());
             g.drawString("Pontos " + getMacasComidas(), (getLARGURA_TELA() - metrics.stringWidth("Pontos " + getMacasComidas())), g.getFont().getSize());
+        } else {
+            gameOver(g);
         }
     }
 
@@ -134,6 +136,18 @@ public class DrawPanel extends JPanel implements ActionListener {
                 break;
         }
     }
+
+    private void gameOver(Graphics g) {
+        g.setColor(Color.yellow);
+        g.setFont(new Font(FONTE, Font.BOLD, 17));
+        FontMetrics metrics = getFontMetrics(g.getFont());
+        g.drawString("Pontos " + getMacasComidas(), (getLARGURA_TELA() - metrics.stringWidth("Pontos " + getMacasComidas())), g.getFont().getSize());
+        
+        g.setColor(Color.red);
+        g.setFont(new Font(FONTE, Font.BOLD, 40));
+        FontMetrics msg = getFontMetrics(g.getFont());
+        g.drawString("Game Over! ", (getLARGURA_TELA() - msg.stringWidth("Game Over"))/2, getALTURA_TELA() / 2);
+    }
     //--------------------------------------------------------------------------------------------------------------
     //Getters and setters 
 
@@ -159,6 +173,10 @@ public class DrawPanel extends JPanel implements ActionListener {
 
     public static void setAppleY(int appleY) {
         DrawPanel.appleY = appleY;
+    }
+
+    public static String getFONTE() {
+        return FONTE;
     }
 
     public static int getMacasComidas() {
