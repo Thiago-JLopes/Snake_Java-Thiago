@@ -19,6 +19,7 @@ public class jogador {
         this.nome = nome;
         this.idade = idade;
         this.email = email;
+        this.record = 0;
     }
 
     public void setNome(String nome) throws nomeException{

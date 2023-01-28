@@ -8,6 +8,10 @@ package model;
  *
  * @author thiago
  */
-public class idadeException {
+public class idadeException extends Exception{
+
+    public idadeException() {
+        super("Idade Inválida!");
+    }
     
 }

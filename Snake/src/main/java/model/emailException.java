@@ -8,6 +8,9 @@ package model;
  *
  * @author thiago
  */
-public class emailException {
-    
+public class emailException extends Exception{
+
+    public emailException() {
+        super("Email Inválido");
+    } 
 }
