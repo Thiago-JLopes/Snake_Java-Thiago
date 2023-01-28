@@ -21,7 +21,11 @@ public class jogador {
         this.email = email;
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome) throws nomeException{
+        for(int i = 0; i < nome.length(); i++) {
+            if(nome.charAt(i) < 65 || nome.charAt(i) > 90)
+                throw new nomeException();
+        }
         this.nome = nome;
     }
 
@@ -34,7 +38,37 @@ public class jogador {
         this.idade = idade;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email) throws emailException{
+        if(!email.contains("@"))
+            throw new emailException();
+        if(!email.contains("."))
+            throw new emailException();
+        if(email.indexOf("@") > email.indexOf("."))
+            throw new emailException();
+        
+        String split[] = email.split("@");
+        if(split.length < 2)
+            throw new emailException();
+        
+        for(int i = 0; i < split[0].length(); i++) {
+            if(split[0].charAt(i) < 97 || split[0].charAt(i) > 122)
+                throw new emailException();
+        }
+        
+        String splitPoint[] = split[1].split("\\.");
+        if(splitPoint.length < 2)
+            throw new emailException();
+        
+        for(int i = 0; i < splitPoint[0].length(); i++) {
+            if(splitPoint[0].charAt(i) < 97 || splitPoint[0].charAt(i) > 122)
+                throw new emailException();
+        }
+        
+        for(int i = 0; i < splitPoint[1].length(); i++) {
+            if(splitPoint[1].charAt(i) < 97 || splitPoint[1].charAt(i) > 122)
+                throw new emailException();
+        }
+        
         this.email = email;
     }
 
