@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 public class DrawFrame extends JFrame {
 
     private DrawPanel tabuleiro;
+    private telaLogin telaLogin;
 
     public DrawFrame() {
         super("Snake-Java");
@@ -22,10 +23,12 @@ public class DrawFrame extends JFrame {
         this.setSize(600, 600);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        
+        this.telaLogin = new telaLogin();
+        //this.tabuleiro = new DrawPanel();
 
-        this.tabuleiro = new DrawPanel();
-
-        this.add(this.tabuleiro);
+        this.add(this.telaLogin);
+        //this.add(this.tabuleiro);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
 

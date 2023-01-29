@@ -4,39 +4,23 @@
  */
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import model.jogador;
-
+import java.awt.*;
+import javax.swing. *;
 /**
  *
  * @author thiago
  */
-public class telaLogin extends JPanel{
-    private JTextField usuario;
-    private JTextField idade;
-    private JTextField email;
-    
+public class telaLogin extends JPanel {
+
     public telaLogin() {
-        this.setPreferredSize(new Dimension(300, 200));
+        this.setPreferredSize(new Dimension(400, 200));
         this.setLayout(new BorderLayout());
-        this.setBackground(new Color(35,35,142));
         this.setFocusable(true);
+        desenharTelaLogin();
     }
-    
-    public void login() {
-        JPanel cadastro = new JPanel();
-        cadastro.setBorder(BorderFactory.createTitledBorder("Cadastro"));
-        cadastro.setLayout(new BorderLayout());
-        
-        JLabel Jlusuario = new JLabel("Usuário");
-        cadastro.add(Jlusuario);
+
+    public void desenharTelaLogin() {
         
     }
-    
+
 }

@@ -1,6 +1,12 @@
 controller/CapturarMaca.class
 controller/leitorTeclado.class
-view/DrawFrame.class
-view/DrawPanel.class
+model/idadeException.class
+controller/realizarLogin.class
 com/mycompany/snake/Snake.class
+model/nomeException.class
+model/jogador.class
+view/DrawFrame.class
+model/emailException.class
+view/DrawPanel.class
+view/telaLogin.class
 controller/validarPosicoes.class

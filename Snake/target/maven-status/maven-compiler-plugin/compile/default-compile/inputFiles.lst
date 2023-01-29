@@ -1,6 +1,12 @@
 /home/thiago/Projetos Java/Snake/Snake/src/main/java/controller/leitorTeclado.java
+/home/thiago/Projetos Java/Snake/Snake/src/main/java/controller/realizarLogin.java
 /home/thiago/Projetos Java/Snake/Snake/src/main/java/com/mycompany/snake/Snake.java
 /home/thiago/Projetos Java/Snake/Snake/src/main/java/controller/CapturarMaca.java
+/home/thiago/Projetos Java/Snake/Snake/src/main/java/model/emailException.java
 /home/thiago/Projetos Java/Snake/Snake/src/main/java/view/DrawFrame.java
 /home/thiago/Projetos Java/Snake/Snake/src/main/java/controller/validarPosicoes.java
+/home/thiago/Projetos Java/Snake/Snake/src/main/java/model/nomeException.java
+/home/thiago/Projetos Java/Snake/Snake/src/main/java/view/telaLogin.java
+/home/thiago/Projetos Java/Snake/Snake/src/main/java/model/jogador.java
+/home/thiago/Projetos Java/Snake/Snake/src/main/java/model/idadeException.java
 /home/thiago/Projetos Java/Snake/Snake/src/main/java/view/DrawPanel.java
