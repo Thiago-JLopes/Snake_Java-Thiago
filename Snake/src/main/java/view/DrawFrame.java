@@ -15,7 +15,7 @@ public class DrawFrame extends JFrame {
     private DrawPanel tabuleiro;
 
     public DrawFrame() {
-        super("Snake");
+        super("Snake-Java");
     }
 
     public void draw() {
