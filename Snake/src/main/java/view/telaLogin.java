@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.playGame;
 import java.awt.*;
 import javax.swing.*;
 
@@ -16,8 +17,10 @@ public class telaLogin extends JPanel {
     private JComboBox<String> levelsComboBox;
     private final Image backGroundImage;
     private static final String FONTE = "Ink Free";
+    private final JFrame frameLogin;
 
-    public telaLogin() {
+    public telaLogin(JFrame frame) {
+        this.frameLogin =frame;
         this.setPreferredSize(new Dimension(400, 200));
         this.setLayout(new BorderLayout());
         this.setFocusable(true);
@@ -50,6 +53,7 @@ public class telaLogin extends JPanel {
         JButton start = new JButton("PLAY");
         start.setBounds(290, 145, 100, 25);
         start.setBackground(new Color(255, 105, 97));
+        start.addActionListener(new playGame(frameLogin));
         add(start);
     }
 

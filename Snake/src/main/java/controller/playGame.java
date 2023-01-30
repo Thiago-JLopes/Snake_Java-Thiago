@@ -4,10 +4,28 @@
  */
 package controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import view.DrawFrame;
+
 /**
  *
  * @author thiago
  */
-public class playGame {
+public class playGame implements ActionListener{
+    private final JFrame tela;
+
+    public playGame(JFrame tela) {
+        this.tela = tela;
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        tela.dispose();
+        DrawFrame frame = new DrawFrame();
+        frame.draw();
+        frame.pack();
+    }
     
 }

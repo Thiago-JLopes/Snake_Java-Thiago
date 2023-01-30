@@ -3,7 +3,9 @@
  */
 package com.mycompany.snake;
 
+import controller.iniciar;
 import view.DrawFrame;
+import view.telaLogin;
 
 /**
  *
@@ -12,8 +14,6 @@ import view.DrawFrame;
 public class Snake {
 
     public static void main(String[] args) {
-        DrawFrame frame = new DrawFrame();
-        frame.draw();
-        frame.pack();
+        iniciar inicio = new iniciar();
     }
 }
